@@ -1,0 +1,1790 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+namespace LinqDemo
+{
+    class Student
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Branch { get; set; }
+
+        public static List<Student> GetAllstudent()
+        {
+            List<Student> listStudent = new List<Student>()
+            {
+                new Student(){Id=101,FirstName="Preety",LastName="Tiwary",Branch="CSE"},
+                new Student(){Id=102,FirstName="Preety",LastName="Agrawal",Branch="ETC"},
+                new Student(){Id=103,FirstName="Priyanka",LastName="Dewangan",Branch="ETC"},
+                new Student(){Id=104,FirstName="Hina",LastName="Sharma",Branch="ETC"},
+                new Student(){Id=105,FirstName="Anugrag",LastName="Mohanty",Branch="CSE"},
+                new Student(){Id=106,FirstName="Pranaya",LastName="Kumar",Branch="CSE"},
+                new Student(){Id=107,FirstName="Manoj",LastName="Kumar",Branch="ETC"}
+            };
+            return listStudent;
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            var student = Student.GetAllstudent().OrderBy(x => x.Branch).ToList();
+            foreach (var I in student)
+            {
+                Console.WriteLine($"ID :{I.Id} FirstName : {I.FirstName} LastName : {I.LastName} Branch : {I.Branch}");
+            }
+            Console.WriteLine();
+            var student1 = (from std in Student.GetAllstudent()
+                           orderby std.Branch
+                           select std);
+
+            foreach (var I in student1)
+            {
+                Console.WriteLine($"ID :{I.Id} FirstName : {I.FirstName} LastName : {I.LastName} Branch : {I.Branch}");
+            }
+        }
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+using System;
+namespace ControlFlowDemo
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int x = 4;
+            switch (x)
+            {
+                case 1:
+                    Console.WriteLine("Choice is 1");
+                    break;
+                case 2:
+                    Console.WriteLine("Choice is 2");
+                    break;
+                    case 3:
+                    Console.WriteLine("Choice is 3");
+                    break;
+                default:
+                    Console.WriteLine("Choice other than 1,2 and 3");
+                    break;
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+using System;
+namespace ControlFlowDemo
+{
+    class Progam
+    {
+        public static void Main(string[] args)
+        {
+            string str = "C#";
+            switch (str)
+            {
+                case "C#":
+                case "Java":
+                case "C":
+                    Console.WriteLine("It's a programming Langauge");
+                    break;
+                case "MSSQL":
+                case "MySQL":
+                case "Oracle":
+                    Console.WriteLine("It's a database");
+                    break;
+                case "MVC":
+                case "WEB API":
+                    Console.WriteLine("It's a Framework");
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input");
+                    break;
+
+            }
+        }
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Reflection.Emit;
+namespace DemoControlFlow
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter Number Between 1 and 3");
+           int number= Convert.ToInt32(Console.ReadLine());
+
+            switch (number)
+            {
+                case 1:
+                    Console.WriteLine("You Entered One");
+                Label:
+                    Console.WriteLine("Enter The color code (R/G/B)");
+                    char color = Convert.ToChar(Console.ReadLine());
+
+                
+                    switch (Char.ToUpper(color))
+                    {
+                        case 'R':
+                            Console.WriteLine("You have Selected Red Color");
+                            break;
+                        case 'G':
+                            Console.WriteLine("You have Selected Green color");
+                            break;
+                        case 'B':
+                            Console.WriteLine("You have Selected Blue Color");
+                            break;
+
+                        default:
+                            Console.WriteLine("You have entered Invalid Color Code");
+                            break;
+                    }
+                    break;
+                    case 2:
+                    Console.WriteLine("You have entered two ");
+                    goto Label;
+                    break;
+                    case 3:
+                    Console.WriteLine("Yo have entered Three");
+                    goto Label;
+                    break;
+                default:
+                    Console.WriteLine("You have entered invalid number");
+                    break;
+            }
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------NO Aurgument and no return Type------------------------------
+using System;
+using System.Diagnostics;
+namespace DemoFunction
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a = 5;
+            int b = 6;
+            Console.WriteLine($"The addition of {a} and {b} is- "+Add(a,b));
+
+            static int Add(int x,int y)
+            {
+                return x + y;
+            }
+        }
+    }
+}
+
+-----------------NO Aurgument and return a value----------------------------------
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+namespace DemoFunction
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int j;
+            j = Add();
+            Console.WriteLine(j);
+        }
+            static int Add()
+        {
+            int x = 5;
+            int y = 6;
+            int sum = x + y;
+            return sum;
+        }
+    }
+        
+    }
+-------------------------------------Function with Aurgument and Return a Value-------------------------
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+namespace DemoFunction
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int j,a=10,b=12;
+            j = Add(a,b);
+            Console.WriteLine(j);
+        }
+            static int Add(int x, int y)
+        {
+           
+            int sum = x + y;
+            return sum;
+        }
+    }
+        
+    }
+
+------------------------Function with Aurgument and no return Value-------------------------
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+namespace DemoFunction
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a = 10, b = 25;
+             Add(a,b);
+            
+        }
+            static void Add(int x, int y)
+        {
+           
+            int sum = x + y;
+            Console.WriteLine($"The sum of Two numbers {x} and {y} is - "+sum);
+        }
+    }
+        
+    }
+	
+------------------------WHILE LOOP CONTROL FLOW-------------------------
+using System;
+namespace DemocontrolFlow
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int x = 1;
+            while(x<=10)
+            {
+                Console.WriteLine(x);
+                x++;
+            }
+        }
+    }
+}
+
+-------------------------------------------------------------------------------
+using System;
+namespace DemocontrolFlow
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int j = 2;
+            while (j <= 10)
+            {
+                Console.Write(j+" ");
+                j = j + 2;
+            }
+        }
+    }
+}	
+-----------------------------------------------------------------
+using System;
+namespace DemocontrolFlow
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int i = 0; int j=1;
+            int k = i + j;
+            Console.WriteLine($"{i} {j}");
+            while(k<=10)
+            {
+                Console.Write($" {k}");
+                i = j;
+                j=k;
+                k = i + j;
+               
+            }
+        }
+    }
+}
+----------------------------------------------------------------------------------
+using System;
+namespace DemocontrolFlow
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int i=1;
+            while (i<=6)
+            {
+                
+              Console.WriteLine();
+                int j = 1;
+                while (j <= i)
+                {
+                    Console.Write(j+" ");
+                    j++;
+                }
+                i++;
+                
+            }
+            Console.ReadKey();
+        }
+    }
+}
+------------------------------------------------------------------------------------
+using System;
+namespace DemocontrolFlow
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int i=1;
+            while (i<=6)
+            {
+                
+              Console.WriteLine();
+                int j = 1;
+                while (j <= 6)
+                {
+                    Console.Write(j+" ");
+                    j++;
+                }
+                i++;
+                
+            }
+            Console.ReadKey();
+        }
+    }
+}
+-------------------------------------------------------------------------
+using System;
+namespace DemocontrolFlow
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int option;
+            int number1, number2;
+            char choice;
+            do
+            {
+                Console.WriteLine("Press 1 for Addition,2 for Subraction,3 for Multiplication and 4 for Dividion");
+                option=Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("Enter the Values of two Numbers :");
+                        number1= Convert.ToInt32(Console.ReadLine());
+                        number2= Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"The Sum of {number1} and {number2} is - {number1 + number2}");
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the Values of two Numbers :");
+                        number1 = Convert.ToInt32(Console.ReadLine());
+                        number2 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"The Subraction of {number1} and {number2} is - {number1 - number2}");
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Enter the Values of two Numbers :");
+                        number1 = Convert.ToInt32(Console.ReadLine());
+                        number2 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"The Multiplication of {number1} and {number2} is - {number1 * number2}");
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter the Values of two Numbers :");
+                        number1 = Convert.ToInt32(Console.ReadLine());
+                        number2 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"The Division of {number1} and {number2} is - {number1 / number2}");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Choice");
+                        break;
+                }
+                Console.WriteLine("Please Enter Y to Continue, any keys to terminate");
+                choice = Convert.ToChar(Console.ReadLine());
+            }while(Char.ToUpper(choice) == 'Y');
+        }
+    }
+}
+
+-----------------------------------------------------------------------------------------------------
+
+using System;
+namespace DemoControlFlow
+{
+    class program
+    {
+        public static void Main(string[] args)
+        {
+            int n = 28, sum=0;
+            for (int i = 1; i <= n/2; i++)
+            {
+                if (n %i == 0)
+                {
+                    sum = sum + i;
+                }
+  
+            }
+            if (sum == n && n!=0)
+            {
+                Console.WriteLine("The number is perfect number");
+            }
+            else
+            {
+                Console.WriteLine("The number is not perfect number");
+            }
+        }
+    }
+}
+----------------------------------------------------------------------------------
+
+using System;
+namespace DemoControlFlow
+{
+    class program
+    {
+        public static void Main(string[] args)
+        {
+            string numstr = "153";
+            int length= numstr.Length;
+            int digit= 0;
+            int finalnumber = 0;
+            
+            
+
+            for (int i = 0; i <length; i++)
+            {
+                string armstring= numstr.Substring(i, 1);
+               
+                int final = 1;
+                for (int j = 0; j < length; j++)
+                {
+                    digit = Convert.ToInt32(armstring);
+                    final = final * digit;
+                    
+                }
+                finalnumber = finalnumber + final;
+                
+            }
+            Console.WriteLine(finalnumber);
+            if(finalnumber== Convert.ToInt32(numstr))
+            {
+                Console.WriteLine("The Number is Armstrong number");
+            }
+            else
+            {
+                Console.WriteLine("The number is not a armstrong number");
+            }
+        }
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+using System;
+namespace DemoConstrunctor
+{
+    class Employee
+    {
+        public int Id, Age;
+        public string Name, Address;
+        public bool IsPermanent;
+
+        public Employee() 
+        {
+            Id = 100;
+            Age = 29;
+            Name = "Harihar";
+            Address = "Saraswati Nagar";
+            IsPermanent = true;
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("Employee Id is- "+Id);
+            Console.WriteLine("Employee Age is- " + Age);
+            Console.WriteLine("Employee Name is- " + Name);
+            Console.WriteLine("Employee Address is- " + Address);
+            Console.WriteLine("Employee IsPermanent - " + IsPermanent);
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Employee e1= new Employee();
+            e1.Display();
+        }
+    }
+
+}
+----------------------------------------------------------------------------------------------------
+using System;
+namespace DemoParameterized
+{
+class ParameterizedConstructor
+    {
+        public ParameterizedConstructor(int i)
+        {
+            Console.WriteLine($"ParameterizedConstructor is Called - {i}");
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            ParameterizedConstructor p1=new ParameterizedConstructor(1);
+            ParameterizedConstructor p2 = new ParameterizedConstructor(10);
+        }
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------
+
+using System;
+namespace DemoCopyConstructor
+{
+     class CopyConstructor
+    {
+        int x;
+      public CopyConstructor(int i)
+        {
+            x = i;
+        }
+
+        public CopyConstructor(CopyConstructor obj)
+        {
+            x=obj.x;
+        }
+
+        public void Display()
+        {
+            Console.WriteLine($"Value of X={x}");
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            CopyConstructor c1=new CopyConstructor(10);
+            c1.Display();
+            CopyConstructor c2 = new CopyConstructor(c1);
+            c2.Display();
+        }
+
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------
+
+
+using System;
+namespace DemoStaticConstrunctor
+{
+   public  class StaticConstructor
+    {
+        static StaticConstructor()
+        {
+            Console.WriteLine("The static Constructor is called");
+        }
+    
+
+   
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("The Main Method is Started");
+        }
+    }
+}
+-------------------------------------------------------------------------------------------
+using System;
+namespace DemoConstructor
+{
+    class Employee
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Salary { get; set; }
+        public string Dept { get; set; }
+        public Employee(int id, string name, int salary, string dept)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Salary = salary;
+            this.Dept = dept;
+        }
+        public void Display()
+        {
+            Console.WriteLine("The Id Of Employee - " + Id);
+            Console.WriteLine("The Name Of Employee - " + Name);
+            Console.WriteLine("The Salary Of Employee - " + Salary);
+            Console.WriteLine("The Deptment Of Employee - " + Dept);
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Employee e1 = new Employee(101, "Harihar", 40000, "MIS");
+            e1.Display();
+            Console.WriteLine();
+            Employee e2 = new Employee(102, "Kuldeep", 100000, "MIS");
+            e2.Display();
+        }
+    }
+}
+
+------------------------------------------------------------------------------------------
+using System;
+namespace DemoConstructor
+{
+    class Example
+    {
+        int i;
+        static int j;
+        public Example()
+        {
+            Console.WriteLine("Default Constructor Executed");
+            i = 100;
+        }
+
+        static Example()
+        {
+            Console.WriteLine("Static Constructor Executed");
+            j = 100;
+        }
+
+        public void Increment()
+        {
+            i++;
+            j++;
+        }
+        public void Display()
+        {
+            Console.WriteLine("Value of i :"+i);
+            Console.WriteLine("Value of j :" + j);
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Example e1 = new Example();
+            e1.Increment();
+            e1.Display();
+            e1.Increment();
+            e1.Display();
+            Example e2 = new Example();
+            e2.Increment();
+            e2.Display();
+            e2.Increment();
+            e2.Display();
+        }
+    }
+}
+------------------------------------------------------------------------
+using System;
+namespace EncapsulationDemo
+{
+    class Bank
+    {
+        private double _Amount;
+        public double Amount
+        {
+            get
+            {
+                return _Amount;
+            }
+            set
+            {
+                if(value < 0)
+                {
+                    throw new Exception("Please enter Positive Value");
+                }
+                else
+                {
+                    _Amount = value;
+                }
+            }
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            try
+            {
+                Bank bank = new Bank();
+                bank.Amount = 10;
+                Console.WriteLine(bank.Amount);
+                bank.Amount = -150;
+                Console.WriteLine(bank.Amount);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
+----------------------------------------------------------------------------------------------------------
+using System;
+namespace DemoInterface
+{
+
+    public interface IBank
+    {
+        void ValidateCard();
+        void WithdrawMoney();
+        void CheckBalance();
+        void BankTransfer();
+        void MiniStatement();
+    }
+    public class BankFactory
+    {
+        public static IBank GetBankObject(string bankType)
+        {
+            IBank BankObject = null;
+            if (bankType == "SBI")
+            {
+                BankObject = new SBI();
+            }
+            else if
+                (bankType == "AXIX")
+            {
+                BankObject = new AXIX();
+            }
+            return BankObject;
+        }
+    }
+
+    public class SBI : IBank
+    {
+        public void ValidateCard()
+        {
+            Console.WriteLine("SBI BANK Validate Card");
+        }
+        public void WithdrawMoney()
+        {
+            Console.WriteLine("SBI BANK Withdrawl Amount");
+        }
+        public void CheckBalance()
+        {
+            Console.WriteLine("SBI Bank Check Balance");
+        }
+        public void BankTransfer()
+        {
+            Console.WriteLine("SBI Bank Transfer Amount");
+        }
+        public void MiniStatement()
+        {
+            Console.WriteLine("SBI Bank mini statement");
+        }
+
+    }
+
+    public class AXIX : IBank
+    {
+        public void ValidateCard()
+        {
+            Console.WriteLine("AXIX BANK Validate Card");
+        }
+        public void WithdrawMoney()
+        {
+            Console.WriteLine("AXIX BANK Withdrawl Amount");
+        }
+        public void CheckBalance()
+        {
+            Console.WriteLine("AXIX Bank Check Balance");
+        }
+        public void BankTransfer()
+        {
+            Console.WriteLine("AXIX Bank Transfer Amount");
+        }
+        public void MiniStatement()
+        {
+            Console.WriteLine("AXIX Bank mini statement");
+        }
+
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            IBank sbi = BankFactory.GetBankObject("SBI");
+            sbi.ValidateCard();
+            sbi.WithdrawMoney();
+            sbi.CheckBalance();
+            sbi.MiniStatement();
+            sbi.BankTransfer();
+
+            Console.WriteLine();
+            IBank axix = BankFactory.GetBankObject("AXIX");
+            axix.ValidateCard();
+            axix.WithdrawMoney();
+            axix.CheckBalance();
+            axix.MiniStatement();
+            axix.BankTransfer();
+
+        }
+    }
+    
+}
+
+-----------------------------------------------------------------------------------------------------
+using System;
+namespace DemoAbstract
+{
+
+    public abstract class IBank
+    {
+        public abstract void ValidateCard();
+        public abstract void WithdrawMoney();
+        public abstract void CheckBalance();
+        public abstract void BankTransfer();
+        public abstract void MiniStatement();
+    }
+    public class BankFactory
+    {
+        public static IBank GetBankObject(string bankType)
+        {
+            IBank BankObject = null;
+            if (bankType == "SBI")
+            {
+                BankObject = new SBI();
+            }
+            else if
+                (bankType == "AXIX")
+            {
+                BankObject = new AXIX();
+            }
+            return BankObject;
+        }
+    }
+
+    public class SBI : IBank
+    {
+        public override void ValidateCard()
+        {
+            Console.WriteLine("SBI BANK Validate Card");
+        }
+        public override void WithdrawMoney()
+        {
+            Console.WriteLine("SBI BANK Withdrawl Amount");
+        }
+        public override void CheckBalance()
+        {
+            Console.WriteLine("SBI Bank Check Balance");
+        }
+        public override void BankTransfer()
+        {
+            Console.WriteLine("SBI Bank Transfer Amount");
+        }
+        public override void MiniStatement()
+        {
+            Console.WriteLine("SBI Bank mini statement");
+        }
+
+    }
+
+    public class AXIX : IBank
+    {
+        public override void ValidateCard()
+        {
+            Console.WriteLine("AXIX BANK Validate Card");
+        }
+        public override void WithdrawMoney()
+        {
+            Console.WriteLine("AXIX BANK Withdrawl Amount");
+        }
+        public override void CheckBalance()
+        {
+            Console.WriteLine("AXIX Bank Check Balance");
+        }
+        public override void BankTransfer()
+        {
+            Console.WriteLine("AXIX Bank Transfer Amount");
+        }
+        public override void MiniStatement()
+        {
+            Console.WriteLine("AXIX Bank mini statement");
+        }
+
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            IBank sbi = BankFactory.GetBankObject("SBI");
+            sbi.ValidateCard();
+            sbi.WithdrawMoney();
+            sbi.CheckBalance();
+            sbi.MiniStatement();
+            sbi.BankTransfer();
+
+            Console.WriteLine();
+            IBank axix = BankFactory.GetBankObject("AXIX");
+            axix.ValidateCard();
+            axix.WithdrawMoney();
+            axix.CheckBalance();
+            axix.MiniStatement();
+            axix.BankTransfer();
+
+        }
+    }
+    
+}
+
+------------------------------------------------------------------------------------------------------
+using System;
+using System.Data;
+namespace DemoInheritence
+{
+    public class Person
+    {
+        public string Name { get; set; }
+        public int Age {  get; set; }
+        public string Address { get; set; }
+
+        public Person(string name, int age, string address )
+        {
+            Name = name;
+            Age = age;
+            Address = address;
+        }
+        public void DisplayDetails()
+        {
+            Console.WriteLine($"Name : {Name}, Age : {Age} , Address : {Address}");
+        }
+    }
+
+    public class Student : Person
+    {
+        public string StudentId {  get; set; }
+        public Student(string name, int age, string address, string studentId) : base(name, age, address)
+        {
+            StudentId = studentId;
+        }
+
+        public void Enroll(string courseName)
+        {
+            Console.WriteLine($"{Name} has enrolled in {courseName} course.");
+        }
+    }
+
+    public class Teacher : Person
+    {
+        public string EmployeeId { get; set; }
+        public Teacher(string name, int age, string address, string employeeId) : base( name,age,address)
+        {
+            EmployeeId = employeeId;
+        }
+
+        public void Tech(string courseName)
+        {
+            Console.WriteLine($"{Name} has enrolled in {courseName} course.");
+        }
+     }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Student john = new Student("John Doe", 20, "123 Main St", "S12345");
+            john.DisplayDetails();
+            john.Enroll("Mathematics");
+
+            Teacher mesSmith = new Teacher("Mrs. Smith", 40, "456 Elm St", "T987965");
+            mesSmith.DisplayDetails();
+            mesSmith.Tech("Physics");
+            Console.Read();
+
+        }
+    }
+}
+-------------------------------------------------------------------------------------------------
+using System;
+using System.Security.Cryptography.X509Certificates;
+namespace DemoInheritence
+{
+    public class Animal
+    {
+        public string Name { get; set; }
+        public int Age {  get; set; }
+
+        public string Dite {  get; set; }
+        public Animal(string name,int age,string dite)
+        {
+        this.Name = name;
+        this.Age = age;
+        this.Dite = dite;
+        }
+
+        public void Eat()
+        {
+            Console.WriteLine("{Name} is eating {Dite}.");
+        }
+
+        public virtual void Display()
+        {
+            Console.WriteLine($"I am {Name} . a {Age}-year-old animal that eats {Dite}");
+        }
+    }
+
+    public class Bird : Animal
+    {
+        public bool CanFly { get; set; }
+        public Bird(string name, int age, string dite, bool canfly) : base(name, age, dite)
+        {
+            CanFly = canfly;
+        }
+
+        public void Fly()
+        {
+            if (CanFly)
+            {
+                Console.WriteLine($"{Name} is flying");
+            }
+            else
+            {
+                Console.WriteLine($"{Name} cannot fly.");
+            }
+        }
+        public override void Display()
+        {
+            base.Display();
+            Fly();
+        }
+    }
+
+    public class Mammal:Animal
+    {
+        public string CommunicationSound { get; set; }
+        public Mammal(string name,int age,string dite,string communicationSound) : base(name, age, dite)
+        {
+            CommunicationSound = communicationSound;
+        }
+
+        public void Communicate()
+        {
+            Console.WriteLine($"{Name} makes a {CommunicationSound} sound.");
+        }
+
+        public override void Display()
+        {
+
+            base.Display();
+            Communicate();
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Bird parrot = new Bird("Parrot", 5, "seeds", false);
+            parrot.Display();
+            Console.WriteLine();
+            Mammal lion = new Mammal("Lion", 8, "meet", "roar");
+            lion.Display();
+        }
+    }
+}
+------------------------------------------------------------------------------------
+using System;
+namespace DemoInheritence
+{
+    public class LibraryItem
+    {
+        public string Id {  get; set; }
+        public string Title { get; set; }
+        public LibraryItem(string id, string title)
+        {
+            Id = id; Title = title;
+        }
+
+        public void Borrow()
+        {
+            Console.WriteLine($"'{Title}' has been borrowed");
+        }
+
+        public void Return()
+        {
+            Console.WriteLine($"'{Title}' has been returned");
+        }
+    }
+
+    public class Book : LibraryItem
+    {
+        public string Author {  get; set; }
+        public int Pages {  get; set; }
+
+        public Book(string id,string title,string author,int pages):base (id,title)
+        {
+            Author = author;
+            Pages = pages;
+        }
+
+        public void DisplayBookInfo()
+        {
+            Console.WriteLine($"Book : {Title} by {Author}, {Pages} pages.");
+        }
+    }
+    public class DVD : LibraryItem
+    {
+        public int Runtime { get; set; }
+        public DVD(string id, string title, int runtime) : base(id, title)
+        {
+            Runtime = runtime;
+        }
+
+        public void DisplayDVDinfo()
+        {
+            Console.WriteLine($"DVD : {Title}, RunTime : {Runtime} minutes");
+        }
+    }
+
+   class Program
+    {
+        public static void Main(string[] args)
+        {
+            Book novel = new Book("BK001", "The Great Novel", "John Doe", 320);
+            novel.DisplayBookInfo();
+            novel.Borrow();
+            novel.Return();
+            Console.WriteLine();
+            DVD movie = new DVD("DV001", "Epic Movie", 120);
+            movie.DisplayDVDinfo();
+            movie.Borrow();
+            movie.Return();
+        }
+    }
+}
+
+-----------------------------------------------------------------------------------------------------
+
+using System;
+namespace DemoInheritence
+{
+   public class Device
+    {
+        public string Processsor {  get; set; }
+        public int RAM {  get; set; }
+        public int Stroage {  get; set; }
+        public Device(string processsor, int rAM, int stroage)
+        {
+            Processsor = processsor;
+            RAM = rAM;
+            Stroage = stroage;
+        }
+
+        public void BootUp()
+        {
+            Console.WriteLine("Device is booting up......");
+        }
+        
+    }
+
+    public class Desktop : Device
+    {
+        public string CoolingSystem {  get; set; }
+        public Desktop(string processsor, int ram, int stroage, string coolingsystem) : base(processsor, ram, stroage)
+        {
+            CoolingSystem = coolingsystem;
+        }
+
+        public void DisplayDesktopInfo()
+        {
+            Console.WriteLine($"Desktop with {Processsor}, {RAM} GB RAM,{Stroage} GB Stroage, and {CoolingSystem} cooling");
+        }
+
+    }
+
+    public class Laptop : Device
+    {
+        public int BatteryLife {  get; set; }
+        public Laptop(string processsor,int ram,int stroage ,int batteryLife):base(processsor,ram,stroage)
+        {
+            BatteryLife=batteryLife;
+        }
+
+        public void DisplayLaptopInfo()
+        {
+            Console.WriteLine($"Laptop with {Processsor},{RAM} GB RAM,{Stroage} GB Stroage and {BatteryLife} hours battery life");
+        }
+    }
+
+    class program
+    {
+        public static void Main(string[] args)
+        {
+            Desktop gamingPC = new Desktop("Intel i9", 32, 1024, "Liquid Cooling");
+            gamingPC.BootUp();
+            gamingPC.DisplayDesktopInfo();
+
+            Console.WriteLine();
+
+            Laptop ultrabook = new Laptop("Intel i7", 16, 512, 10);
+            gamingPC.BootUp();
+            ultrabook.DisplayLaptopInfo();
+            
+            
+        }
+    }
+}
+------------------------------------------------------------
+using System;
+namespace DemoInterface
+{
+    public interface IMovable
+    {
+        void Move();
+    }
+
+    public class Car : IMovable
+    {
+        public void Move()
+        {
+            Console.WriteLine("The car drives on the road.");
+        }
+    }
+
+    public class Boat : IMovable
+    {
+        public void Move()
+        {
+            Console.WriteLine("The boat sails on the water");
+        }
+    }
+
+    public class Airplane: IMovable
+    {
+        public void Move()
+        {
+            Console.WriteLine("The airplane files in the sky");
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            List<IMovable> vehicles = new List<IMovable> { new Car(), new Boat(), new Airplane() };
+
+            foreach (var vehicle in vehicles)
+            {
+                vehicle.Move();
+            }
+
+        }
+    }
+}
+-----------------------------------------------------------------------------------------------
+using System;
+using System.Reflection.Metadata.Ecma335;
+namespace InterfaceCsharp
+{
+    public interface IpaymentGateway
+    {
+        bool ProcessPayment(decimal amount);
+    }
+
+    public class PayPalPayment : IpaymentGateway
+    {
+        public bool ProcessPayment(decimal amount)
+        {
+            Console.WriteLine($"Processing {amount} payment using Paypal.......");
+            return true;
+        }
+    }
+
+    public class StripePayment : IpaymentGateway
+    {
+        public bool ProcessPayment(decimal amount)
+        {
+            Console.WriteLine($"Processing {amount} payment using StriprPaymrnt....... ");
+            return true;
+        }
+    }
+
+    public class ShoppingCart
+    {
+        private IpaymentGateway _gateway;
+
+        public ShoppingCart(IpaymentGateway gateway)
+        {
+            _gateway = gateway;
+        }
+        public void Checkout(decimal amount)
+        {
+            if(_gateway.ProcessPayment(amount))
+            {
+                Console.WriteLine("Payment was successfull!");
+            }
+            else
+            {
+                Console.WriteLine("Payment failed.Please try again");
+            }
+        }
+    }
+
+    class program
+    {
+        public static void Main(string[] args)
+        {
+            ShoppingCart cart = new ShoppingCart(new PayPalPayment());
+            cart.Checkout(100.00M);
+        }
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------
+
+using System;
+namespace InterfaceDEMO
+{
+    public interface IDatabase
+    {
+        public void Connect();
+        public void Insert(string data);
+        void Disconnect();
+    }
+
+    public class SqlDatabase: IDatabase
+    {
+        public void Connect()
+        {
+            Console.WriteLine("Connected to SQL Database.");
+        }
+
+        public void Insert(string data)
+        {
+            Console.WriteLine($"Inserted '{data}' into SQL Database. ");
+        }
+
+        public void Disconnect()
+        {
+            Console.WriteLine("Disconnected to SQL Database.");
+        }
+    }
+
+    public class OracleDatabase : IDatabase
+    {
+        public void Connect()
+        {
+            Console.WriteLine("Connected to Oracle Database.");
+        }
+
+        public void Insert(string data)
+        {
+            Console.WriteLine($"Inserted '{data}' into Oracle Database. ");
+        }
+
+        public void Disconnect()
+        {
+            Console.WriteLine("Disconnected to Oracle Database.");
+        }
+    }
+
+    public class DatabaseManagement
+    {
+        private IDatabase _database;
+        public DatabaseManagement(IDatabase database)
+        {
+            _database = database;
+        }
+        public void AddData(string data)
+        {
+            _database.Connect();    
+            _database.Insert(data);
+            _database.Disconnect();
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            DatabaseManagement dbManger = new DatabaseManagement(new SqlDatabase());
+            dbManger.AddData("SampleData");
+            Console.WriteLine();
+            DatabaseManagement ObManager = new DatabaseManagement(new OracleDatabase());
+            ObManager.AddData("OracleDatabase");
+        }
+
+    }
+}
+----------------------------------------------------------------------------------------------------
+using System;
+namespace DemoAbstractclass
+{
+    public abstract class BankAccount
+    {
+        public string AccountNumber { get; private set; }
+        public string AccountHolder { get; private set; }
+        protected double Balance { get; set; }
+        public BankAccount(string accountNumber, string accountHolder)
+        {
+            AccountNumber = accountNumber;
+            AccountHolder = accountHolder;
+        }
+
+        public abstract void Deposit(double amount);
+        public abstract void Withdraw(double amount);
+
+        public virtual void DisplayBalance()
+        {
+            Console.WriteLine($"Account NUmber : {AccountNumber} , Account Holder : {AccountHolder},Balance ${Balance}");
+        }
+    }
+
+    public class SavingAccount : BankAccount
+    {
+        private double _interestRate = 0.03;
+
+        public SavingAccount(string accountNumber, string accountHolder) : base(accountNumber, accountHolder)
+        {
+        }
+
+        public override void Deposit(double amount)
+        {
+            Balance = Balance + amount;
+            Console.WriteLine($"Deposited ${amount} into Savings Account");
+        }
+        public override void Withdraw(double amount)
+        {
+            if ((Balance - amount) >= 0)
+            {
+                Balance -= amount;
+                Console.WriteLine($"Withdraw ${amount} from saving Account");
+            }
+            else
+            {
+                Console.WriteLine("Insufficient funds for withdrawl");
+            }
+        }
+
+        public void AddInterest()
+        {
+            Balance +=Balance*_interestRate;
+            Console.WriteLine($"Interset added.New Banalce : {Balance}");
+        }
+    }
+
+    public class CurrentAccount : BankAccount
+    {
+        private double _overdraftLimit = 1000.0;
+        public CurrentAccount(string accountNumber, string accountHolder) : base(accountNumber, accountHolder)
+        {
+        }
+
+        public override void Deposit(double amount)
+        {
+            Balance = Balance + amount;
+            Console.WriteLine($"Deposited {amount} into Current Account");
+        }
+
+        public override void Withdraw(double amount)
+        {
+            if ((Balance - amount) >= _overdraftLimit)
+            {
+                Balance -= amount;
+                Console.WriteLine($"withdraw {amount} from Current Account");
+            }
+            else
+            {
+                Console.WriteLine("withdrawal exceeds overdraft limit.");
+            }
+        }
+    }
+
+    class program
+    {
+        public static void Main(string[] args)
+        {
+            SavingAccount johnSaving = new SavingAccount("SA123456", "John Doe");
+            johnSaving.Deposit(1000);
+            johnSaving.Withdraw(200);
+            johnSaving.AddInterest();
+            johnSaving.DisplayBalance();
+            Console.WriteLine();
+            CurrentAccount janesCurrent = new CurrentAccount("CA654321", "Jane Smith");
+            janesCurrent.Deposit(5000);
+            janesCurrent.Withdraw(1000);
+            janesCurrent.DisplayBalance();
+            Console.ReadKey();
+        }
+    }
+}
+---------------------------------------------------------------------------------------------
+using System;
+namespace AbstractClass
+{
+    public abstract class Shape
+    {
+        public string Name { get; set; }
+        public abstract double Area();
+        public virtual void Display()
+        {
+            Console.WriteLine($"Name : {Name} Area: {Area()}");
+        }
+    }
+    public class Circle : Shape
+    {
+        public double Radius { get; set; }
+        public Circle(double radius)
+        {
+            Name = "Circle";
+            Radius = radius;
+        }
+
+        public override double Area()
+        {
+            return Math.PI * Radius * Radius
+                ;
+        }
+    }
+
+    public class Rectangle:Shape
+        {
+        public double Width {  get; set; }
+        public double Height { get; set; }
+        public Rectangle(double width, double height)
+        {
+            Width = width; Height = height;
+            Name = "Rectangle";
+        }
+
+        public override double Area()
+        {
+            return (Width * Height);
+        }
+   }
+
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Rectangle rectangle = new Rectangle(5, 6);
+            rectangle.Display();
+            Circle circle = new Circle(5);
+            circle.Display();
+        }
+    }
+}
+-------------------------------------------------------------------------------------------------
+using System;
+namespace AbstractDemo
+{
+    public abstract class Animal
+    {
+        public string Name { get; set; }
+        public abstract void Speak();
+        public virtual void Eat()
+        {
+            Console.WriteLine($"{Name} is eating");
+        }
+    }
+    class Dog : Animal
+    {
+        public Dog(string name)
+        {
+            Name = name;
+        }
+        public override void Speak()
+        {
+            Console.WriteLine($"{Name} says :Woof!");
+        }
+
+    }
+
+    class Fish : Animal
+    {
+        public Fish(string name)
+        {
+            Name = name;
+        }
+
+        public override void Speak()
+        {
+            Console.WriteLine($"{Name} bubbles!");
+        }
+
+        public override void Eat()
+        {
+            Console.WriteLine($"{Name} is nibbling on some Seaweed");
+        }
+    }
+
+   
+class Program
+    {
+        public static void Main(string[] args)
+        {
+            Dog dog = new Dog("Buddy");
+            dog.Speak();
+            dog.Eat();
+
+            Fish fish = new Fish("Nemo");
+            fish.Speak(); fish.Eat();  
+        }
+    }
+
+}
+----------------------------------------------------------------------------------------------
+using System;
+namespace AbstractDemo
+{
+    public abstract class Vehicle
+    {
+        public string Brand {  get; set; }
+        public abstract void Move();
+        public virtual void Refuel()
+        {
+            Console.WriteLine($"{Brand} is refueling");
+        }
+    }
+
+    class Car : Vehicle
+    {
+        public Car(string brand)
+        {
+            Brand = brand;
+        }
+
+        public override void Move()
+        {
+            Console.WriteLine($"{Brand} car is driving.");
+        }
+
+        public override void Refuel()
+        {
+            Console.WriteLine($"{Brand} car is fillingup with gas.");
+        }
+    }
+
+    class Bicycle : Vehicle
+    {
+        public Bicycle(string brand)
+        {
+            Brand = brand;
+        }
+
+        public override void Move()
+        {
+            Console.WriteLine($"{Brand} bicycle is pedaling");
+        }
+
+        public override void Refuel()
+        {
+            base.Refuel();
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+
+            Car car = new Car("Harier");
+            car.Refuel();
+            car.Move();
+            Bicycle bi = new Bicycle("Toyota");
+            bi.Move();
+            bi.Refuel();
+        }
+    }
+}
+------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Runtime.InteropServices;
+namespace AbstractDemo
+{
+    public abstract class Employee
+    {
+        public string Name { get; set; }
+        public string EmployeeID { get; set; }
+
+        public Employee(string name, string employeeID)
+        {
+            Name = name;
+            EmployeeID = employeeID;
+        }
+
+        public abstract void PerformTask();
+        public virtual void AttendMeeting()
+        {
+            Console.WriteLine($"{Name} is attending a general meeting");
+        }
+    }
+
+    class Manager : Employee
+    {
+        public Manager(string name, string employeeID) : base(name, employeeID)
+        {
+        }
+
+        public override void PerformTask()
+        {
+            Console.WriteLine($"{Name} is assiging tasks to team members.");
+        }
+
+        public override void AttendMeeting()
+        {
+            Console.WriteLine($"{Name} is attending a managerial meeting.");
+        }
+    }
+
+    class Developer : Employee
+    {
+        public Developer(string name, string employeeID) : base(name, employeeID)
+        {
+        }
+
+        public override void PerformTask()
+        {
+            Console.WriteLine($"{Name} is writing  code.");
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Manager alice = new Manager("Alice", "Moo1");
+            alice.PerformTask();
+            alice.AttendMeeting();
+            Developer bob = new Developer("BOB", "D001");
+            bob.PerformTask();
+
+            bob.AttendMeeting();
+        }
+    }
+}

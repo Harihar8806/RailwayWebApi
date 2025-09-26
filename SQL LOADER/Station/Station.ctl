@@ -1,0 +1,10 @@
+OPTIONS (SKIP=1)
+LOAD data
+INFILE 'C:\Users\harih\source\repos\RailwayWebApi\SQL LOADER\Stations_Name.csv'
+INTO TABLE STATIONS
+TRUNCATE
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
+TRAILING NULLCOLS
+(
+StationID,StationCode,StationName  )
+

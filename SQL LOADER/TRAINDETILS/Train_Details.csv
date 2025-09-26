@@ -1,0 +1,53 @@
+TRAINID,TRAIN_NAME,TRAINNUMBER,SOURCESTATIONID,SOURCESTATIONNAME,DESTNATIONSTATIONID,DESTNATIONSTATIONNAME,TOTALDISTANCE,TRAIN_TYPE
+1,Sevagram Express,12139,1,Chatrapati Shivaji Maharaj Terminals,29,Nagpur,835,Express
+2,Nagpur Duranto Express,12289,1,Chatrapati Shivaji Maharaj Terminals,29,Nagpur,835,Duranto
+3,Gitanjali Express,12859,1,Chatrapati Shivaji Maharaj Terminals,56,Howrah Juction,1964,Express
+4,Howrah AC Duronto,12261,1,Chatrapati Shivaji Maharaj Terminals,56,Howrah Juction,1964,Duronto
+5,Mumbai Mail,12809,1,Chatrapati Shivaji Maharaj Terminals,56,Howrah Juction,1964,Mail
+6,Howrah Weekly SF Express,12869,1,Chatrapati Shivaji Maharaj Terminals,56,Howrah Juction,1964,SuperFast
+7,Vidharbha Express,12105,1,Chatrapati Shivaji Maharaj Terminals,26,Gondia Junction,964,SuperFast
+8,Shalimar Express,18029,30,Mumbai LTT ,55,Shalimar,1943,Express
+9,Jnaneswari Express,12101,30,Mumbai LTT ,55,Shalimar,1943,Super Fast
+10,Samarsata Express,12151,30,Mumbai LTT ,55,Shalimar,1943,Super Fast
+11,Samarsata Express,12152,55,Shalimar,30,Mumbai LTT,1943,Super Fast
+12,Jnaneswari Express,12102,55,Shalimar,30,Mumbai LTT,1943,Super Fast
+13,Shalimar Express,18030,55,Shalimar,30,Mumbai LTT,1943,Express
+14,Vidharbha Express,12106,26,Gondia Junction,1,Chatrapati Shivaji Maharaj Terminals,964,Super Fast
+15,Howrah Weekly SF Express,12870,56,Howrah Juction,1,Chatrapati Shivaji Maharaj Terminals,1964,Super Fast
+16,Mumbai Mail,12810,56,Howrah Juction,1,Chatrapati Shivaji Maharaj Terminals,1964,Mail
+17,Howrah AC Duronto,12262,56,Howrah Juction,1,Chatrapati Shivaji Maharaj Terminals,1964,Duranto
+18,Gitanjali Express,12860,56,Howrah Juction,1,Chatrapati Shivaji Maharaj Terminals,1964,Express
+19,Nagpur Duranto Express,12290,29,Nagpur Juction,1,Chatrapati Shivaji Maharaj Terminals,835,Duranto
+20,Sevagram Express,12140,29,Nagpur Juction,1,Chatrapati Shivaji Maharaj Terminals,835,Express
+21,Punjab Mail,12137,1,Chatrapati Shivaji Maharaj Terminals,82,New Delhi,1545,Mail
+22,Amritsar Express,11057,1,Chatrapati Shivaji Maharaj Terminals,82,New Delhi,1545,Express
+23,Hazrat Nizamuddin Rajdhani,22221,1,Chatrapati Shivaji Maharaj Terminals,81,Hazrat Nizamuddin,1538,Rajdhani
+24,Haridwar AC SF Express,12171,30,Mumbai LTT,81,Hazrat Nizamuddin,1538,Super Fast
+25,Haridwar AC SF Express,12172,81,Hazrat Nizamuddin,30,Mumbai LTT,1538,Super Fast
+26,Hazrat Nizamuddin Rajdhani,22222,81,Hazrat Nizamuddin,1,Chatrapati Shivaji Maharaj Terminals,1538,Rajdhani
+27,Amritsar Express,11058,82,New Delhi,1,Chatrapati Shivaji Maharaj Terminals,1545,Express
+28,Punjab Mail,12138,82,New Delhi,1,Chatrapati Shivaji Maharaj Terminals,1545,Express
+29,Grand Trunk Express,12615,90,MGR Chennai Central,82,New Delhi,2192,Express
+30,Tamil Nadu Express,12621,90,MGR Chennai Central,82,New Delhi,2192,Express
+31,Andhra Pradesh Express,20805,94,Visakhapatnam Junction,82,New Delhi,2107,Express
+32,Telangana Express,12723,99,Hyderabad Deccan Namapally,82,New Delhi,1683,Express
+33,Kerala Express,12625,100,Thiruvananthapuram central,82,New Delhi,3040,Express
+34,Dhakshin Express,12721,99,Hyderabad Deccan Namapally,81,Hazrat Nizamuddin,1676,Express
+35,Gondwana SF Express,12409,47,Raigarh,81,Hazrat Nizamuddin,1634,Express
+36,Gondwana SF Express,12405,15,Bhusaval Junction,81,Hazrat Nizamuddin,1482,Express
+37,Rajdhani Express,22691,101,KSR Bengaluru City Junction,81,Hazrat Nizamuddin,2371,Rajdhani
+38,MGR Chennai Central - Hazrat Nizamuddin Duronto Express,12269,90,MGR Chennai Central,81,Hazrat Nizamuddin,2180,Duronto
+39,Chhattisgarh Express,18237,45,Bilaspur Junction,81,Hazrat Nizamuddin,1497,Express
+40,New Delhi Rajdhani Express,12441,45,Bilaspur Junction,82,New Delhi,1504,Rajdhani
+41,Grand Trunk Express,12616,82,New Delhi,90,MGR Chennai Central,2192,Express
+42,Tamil Nadu Express,12622,82,New Delhi,90,MGR Chennai Central,2192,Express
+43,Andhra Pradesh Express,20806,82,New Delhi,94,Visakhapatnam Junction,2107,Express
+44,Telangana Express,12724,82,New Delhi,99,Hyderabad Deccan Namapally,1683,Express
+45,Kerala Express,12626,82,New Delhi,100,Thiruvananthapuram central,3040,Express
+46,Dhakshin Express,12722,81,Hazrat Nizamuddin,99,Hyderabad Deccan Namapally,1676,Express
+47,Gondwana SF Express,12410,81,Hazrat Nizamuddin,47,Raigarh,1634,Express
+48,Gondwana SF Express,12406,81,Hazrat Nizamuddin,15,Bhusaval Junction,1482,Express
+49,Rajdhani Express,22692,81,Hazrat Nizamuddin,101,KSR Bengaluru City Junction,2371,Rajdhani
+50,MGR Chennai Central - Hazrat Nizamuddin Duronto Express,12270,81,Hazrat Nizamuddin,90,MGR Chennai Central,2180,Duronto
+51,Chhattisgarh Express,18238,81,Hazrat Nizamuddin,45,Bilaspur Junction,1497,Express
+52,New Delhi Rajdhani Express,12442,81,Hazrat Nizamuddin,45,Bilaspur Junction,1504,Rajdhani

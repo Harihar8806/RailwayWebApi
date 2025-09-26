@@ -1,0 +1,183 @@
+DECLARE
+    CURSOR C_AGENTS IS
+    SELECT
+        *
+    FROM
+        HARIHAR.BANCA_HUMAN_HIERARCHY;
+
+    TYPE T_AGENTS IS
+        TABLE OF C_AGENTS%ROWTYPE INDEX BY PLS_INTEGER;
+    V_AGENTS    T_AGENTS;
+    V_ID        NUMBER;
+    V_MESSAGE   VARCHAR2(4000);
+    V_INDEX     NUMBER;
+    V_CMS       NUMBER;
+    BULK_ERROS EXCEPTION;
+    PRAGMA EXCEPTION_INIT ( BULK_ERROS, -24381 );
+BEGIN
+    OPEN C_AGENTS;
+    FETCH C_AGENTS BULK COLLECT INTO V_AGENTS;
+    CLOSE C_AGENTS;
+    FORALL I IN V_AGENTS.FIRST..V_AGENTS.LAST SAVE EXCEPTIONS
+        INSERT INTO BANCA_HUMAN_HIERARCHY_5 (
+            ZONE_NAME,
+            REGION_NAME,
+            BRANCH_NAME,
+            CMS_CODE,
+            EMPLOYEE_NO,
+TITLE,
+            EMPLOYEE_NAME,
+            EMPLOYEE_ROLE,
+            EMPLOYEE_DESIGNATION_NAME,
+            POSITION_TYPE,
+            DATE_OF_JOINING,
+            DATE_OF_CREATION,
+            GENDER,
+            ADDRESS1,
+            ADDRESS2,
+            ADDRESS3,
+            CITY,
+            PINCODE,
+            STATE,
+            MOBILE_NO,
+            LANDLINE_NO,
+            EMAIL_ID,
+            GRADE,
+            LEVEL_1,
+            TURBO_CATEGORY,
+            REPORTING_CODE,
+            REPORTING_NAME,
+            REPORTING_EMP_NO,
+            REPORTING_DESIGNATION,
+            CIRCLE,
+            BRANCH_TYPE,
+            CHANNEL_NAME,
+            EXTRACTION_DATE
+        ) VALUES (
+            V_AGENTS(I).ZONE_NAME,
+            V_AGENTS(I).REGION_NAME,
+            V_AGENTS(I).BRANCH_NAME,
+            V_AGENTS(I).CMS_CODE,
+            V_AGENTS(I).EMPLOYEE_NO,
+            V_AGENTS(I).TITLE,
+            V_AGENTS(I).EMPLOYEE_NAME,
+            V_AGENTS(I).EMPLOYEE_ROLE,
+            V_AGENTS(I).EMPLOYEE_DESIGNATION_NAME,
+            V_AGENTS(I).POSITION_TYPE,
+            V_AGENTS(I).DATE_OF_JOINING,
+            V_AGENTS(I).DATE_OF_CREATION,
+            V_AGENTS(I).GENDER,
+            V_AGENTS(I).ADDRESS1,
+            V_AGENTS(I).ADDRESS2,
+            V_AGENTS(I).ADDRESS3,
+            V_AGENTS(I).CITY,
+            V_AGENTS(I).PINCODE,
+            V_AGENTS(I).STATE,
+            V_AGENTS(I).MOBILE_NO,
+            V_AGENTS(I).LANDLINE_NO,
+            V_AGENTS(I).EMAIL_ID,
+            V_AGENTS(I).GRADE,
+            V_AGENTS(I).LEVEL_1,
+            V_AGENTS(I).TURBO_CATEGORY,
+            V_AGENTS(I).REPORTING_CODE,
+            V_AGENTS(I).REPORTING_NAME,
+            V_AGENTS(I).REPORTING_EMP_NO,
+            V_AGENTS(I).REPORTING_DESIGNATION,
+            V_AGENTS(I).CIRCLE,
+            V_AGENTS(I).BRANCH_TYPE,
+            V_AGENTS(I).CHANNEL_NAME,
+            V_AGENTS(I).EXTRACTION_DATE
+        );
+
+EXCEPTION
+    WHEN BULK_ERROS THEN
+        FOR J IN 1..SQL%BULK_EXCEPTIONS.COUNT LOOP
+            DBMS_OUTPUT.PUT_LINE(SQL%BULK_EXCEPTIONS(J).ERROR_CODE
+                                 || ' '
+                                 || SQLERRM(SQL%BULK_EXCEPTIONS(J).ERROR_CODE)
+                                 || ' '
+                                 || SQL%BULK_EXCEPTIONS(J).ERROR_INDEX);
+
+            V_ID := SQL%BULK_EXCEPTIONS(J).ERROR_CODE;
+            V_MESSAGE := SQLERRM(SQL%BULK_EXCEPTIONS(J).ERROR_CODE);
+            V_INDEX := SQL%BULK_EXCEPTIONS(J).ERROR_INDEX;
+            V_CMS := V_AGENTS(SQL%BULK_EXCEPTIONS(J).ERROR_INDEX).CMS_CODE;
+            INSERT INTO ERROR_LOG_TABLE (
+                ERROR_CODE,
+                ERROR_MESSAGE,
+                ERROR_INDEX,
+                ZONE_NAME,
+                REGION_NAME,
+                BRANCH_NAME,
+                CMS_CODE,
+                EMPLOYEE_NO,
+                TITLE,
+                EMPLOYEE_NAME,
+                EMPLOYEE_ROLE,
+                EMPLOYEE_DESIGNATION_NAME,
+                POSITION_TYPE,
+                DATE_OF_JOINING,
+                DATE_OF_CREATION,
+                GENDER,
+                ADDRESS1,
+                ADDRESS2,
+                ADDRESS3,
+                CITY,
+                PINCODE,
+                STATE,
+                MOBILE_NO,
+                LANDLINE_NO,
+                EMAIL_ID,
+                GRADE,
+                LEVEL_1,
+                TURBO_CATEGORY,
+                REPORTING_CODE,
+                REPORTING_NAME,
+                REPORTING_EMP_NO,
+                REPORTING_DESIGNATION,
+                CIRCLE,
+                BRANCH_TYPE,
+                CHANNEL_NAME,
+                EXTRACTION_DATE
+            ) VALUES (
+                V_ID,
+                V_MESSAGE,
+                V_INDEX,
+                V_AGENTS(V_INDEX).ZONE_NAME,
+                V_AGENTS(V_INDEX).REGION_NAME,
+                V_AGENTS(V_INDEX).BRANCH_NAME,
+                V_AGENTS(V_INDEX).CMS_CODE,
+                V_AGENTS(V_INDEX).EMPLOYEE_NO,
+                V_AGENTS(V_INDEX).TITLE,
+                V_AGENTS(V_INDEX).EMPLOYEE_NAME,
+                V_AGENTS(V_INDEX).EMPLOYEE_ROLE,
+                V_AGENTS(V_INDEX).EMPLOYEE_DESIGNATION_NAME,
+                V_AGENTS(V_INDEX).POSITION_TYPE,
+                V_AGENTS(V_INDEX).DATE_OF_JOINING,
+                V_AGENTS(V_INDEX).DATE_OF_CREATION,
+                V_AGENTS(V_INDEX).GENDER,
+                V_AGENTS(V_INDEX).ADDRESS1,
+                V_AGENTS(V_INDEX).ADDRESS2,
+                V_AGENTS(V_INDEX).ADDRESS3,
+                V_AGENTS(V_INDEX).CITY,
+                V_AGENTS(V_INDEX).PINCODE,
+                V_AGENTS(V_INDEX).STATE,
+                V_AGENTS(V_INDEX).MOBILE_NO,
+                V_AGENTS(V_INDEX).LANDLINE_NO,
+                V_AGENTS(V_INDEX).EMAIL_ID,
+                V_AGENTS(V_INDEX).GRADE,
+                V_AGENTS(V_INDEX).LEVEL_1,
+                V_AGENTS(V_INDEX).TURBO_CATEGORY,
+                V_AGENTS(V_INDEX).REPORTING_CODE,
+                V_AGENTS(V_INDEX).REPORTING_NAME,
+                V_AGENTS(V_INDEX).REPORTING_EMP_NO,
+                V_AGENTS(V_INDEX).REPORTING_DESIGNATION,
+                V_AGENTS(V_INDEX).CIRCLE,
+                V_AGENTS(V_INDEX).BRANCH_TYPE,
+                V_AGENTS(V_INDEX).CHANNEL_NAME,
+                V_AGENTS(V_INDEX).EXTRACTION_DATE
+            );
+
+        END LOOP;
+END;
+/
